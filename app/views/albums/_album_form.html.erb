@@ -1,0 +1,15 @@
+<%= album_form_new_or_edit(new_album, album).html_safe %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+  <input type="hidden" name="albums[band_id]" value="<%= params[:band_id]  %>"/>
+  <% unless new_album %>
+    <input type="hidden" name="_method" value="patch"/>
+  <% end %>
+
+  <label for="albums[name]">Album Name:</label>
+  <input type="text" name="albums[name]" value="<%= album.name %>"/>
+  <br>
+  <% Album.album_types.each do |album_type| %>
+    <input type="radio" name="albums[album_type]" value="<%= album_type %>"<%= "checked='checked'" if album_type == album.album_type %>> <%= album_type %><br>
+  <% end %>
+
+  <%= album_button_new_or_edit(new_album).html_safe %>

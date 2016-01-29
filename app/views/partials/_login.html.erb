@@ -1,0 +1,13 @@
+
+<%= form_login_or_register(new_user).html_safe %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+
+  <label for="user[email]">Email:</label>
+  <input type="text" name="user[email]" />
+  <br>
+
+  <label for="user[password]">Password:</label>
+  <input type="password" name="user[password]" />
+  <br>
+
+  <%= button_login_or_register(new_user).html_safe %>

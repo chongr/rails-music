@@ -1,0 +1,10 @@
+<%= form_new_or_edit(new_band, band).html_safe %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+  <% unless new_band  %>
+    <input type="hidden" name="_method" value="patch"/>
+  <% end %>
+  <label for="bands[name]">Band Name:</label>
+  <input type="text" name="bands[name]" value="<%= band.name %>"/>
+  <br>
+
+  <%= button_new_or_edit(new_band).html_safe %>
